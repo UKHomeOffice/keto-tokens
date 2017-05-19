@@ -88,6 +88,6 @@ test: deps
 
 all: deps
 	echo "--> Running all tests"
-	glide install --strip-vendor --strip-vcs
+	glide install --strip-vendor
 	@$(MAKE) test
 	@$(MAKE) build
