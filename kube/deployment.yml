@@ -1,0 +1,37 @@
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: keto-tokens
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: keto-tokens
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: keto-tokens
+      annotations:
+        repository: https://github.com/UKHomeOffice/keto-tokens
+        owner: devops@digital.homeoffice.gov.uk
+    spec:
+      hostNetwork: true
+      serviceAccount: keto-tokens
+      containers:
+      - name: tokens
+        image: quay.io/ukhomeofficedigital/keto-tokens:latest
+        imagePullPolicy: Always
+        resources:
+          limits:
+            cpu: 100m
+            memory: 128M
+        args:
+        - --tag-name=KubeletToken
+        - --filter=Role=compute
+        - --filter=Env=playground-jest
+        - --token-ttl=20m
+        - --interval=10s
+        - --verbose=true
