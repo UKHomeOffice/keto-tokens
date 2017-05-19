@@ -33,7 +33,7 @@ func newKetoTokens() *cli.App {
 	app.Name = prog
 	app.Usage = "is a client/server used to generate and consume kubelet registration tokens"
 	app.Author = author
-	app.Version = version
+	app.Version = fmt.Sprintf("%s (git+sha: %s)", release, gitsha)
 	app.Flags = []cli.Flag{
 		cli.StringFlag{
 			EnvVar: "CLOUD_PROVIDER",

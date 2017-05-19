@@ -16,8 +16,9 @@ limitations under the License.
 
 package main
 
-const (
+var (
 	prog    = "keto-tokens"
-	version = "v0.0.2"
+	release = "v0.0.1"
 	author  = "devops@digital.homeoffice.gov.uk"
+	gitsha  = ""
 )
