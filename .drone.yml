@@ -28,6 +28,9 @@ pipeline:
           docker login -u="${REGISTRY_USER}" -p=${DOCKER_PASSWORD} ${REPO};
           docker push ${REPO}/${AUTHOR}/${NAME}:${DRONE_TAG:-latest};
         fi
+    when:
+      branch: master
+      event: [tag, push]
 
 services:
   dind:
