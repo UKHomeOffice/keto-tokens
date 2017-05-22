@@ -21,6 +21,7 @@ pipeline:
     commands:
       - docker build -t ${REPO}/${AUTHOR}/${NAME}:latest .
       - docker login -u="${REGISTRY_USER}" -p=${DOCKER_PASSWORD} ${REPO}
+      - docker push ${REPO}/${AUTHOR}/${NAME}:latest
     when:
       branch: master
       event: push
@@ -35,6 +36,7 @@ pipeline:
       - REPO=quay.io
     commands:
       - docker build -t ${REPO}/${AUTHOR}/${NAME}:${DRONE_TAG} .
+      - docker login -u="${REGISTRY_USER}" -p=${DOCKER_PASSWORD} ${REPO}
       - docker push ${REPO}/${AUTHOR}/${NAME}:${DRONE_TAG}
     when:
       event: tag
