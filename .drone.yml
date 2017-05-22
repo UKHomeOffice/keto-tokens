@@ -34,6 +34,7 @@ pipeline:
       - REGISTRY_USER=ukhomeofficedigital+keto_tokens
       - REPO=quay.io
     commands:
+      - docker build -t ${REPO}/${AUTHOR}/${NAME}:${DRONE_TAG} .
       - docker push ${REPO}/${AUTHOR}/${NAME}:${DRONE_TAG}
     when:
       event: tag
