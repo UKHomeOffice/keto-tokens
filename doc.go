@@ -18,7 +18,7 @@ package main
 
 var (
 	prog    = "keto-tokens"
-	release = "v0.0.1"
+	release = "v0.0.3"
 	author  = "devops@digital.homeoffice.gov.uk"
 	gitsha  = ""
 )
